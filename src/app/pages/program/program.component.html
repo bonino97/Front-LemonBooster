@@ -1,0 +1,37 @@
+<div class=" content">
+    <div class=" row">
+      <div class=" col-md-12">
+          <div class="card">
+            <div class=" card-header container-fluid">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h4 class="title">Programs</h4>
+                        <p class=" category">BugBounty Programs</p>
+                    </div>
+                    
+                    <div class="col-md-2">
+                        <button class="btn btn-success btn-simple pull-right" [routerLink]="['/add-program']" >New Program</button> 
+                    </div>
+                </div>
+            </div>
+          </div>
+        <div class=" card">
+          <div class="card-columns">
+
+            <div class="card p-4 text-left " *ngFor="let program of programs">
+              <blockquote class="blockquote">
+                <h4 class="card-title">Program:&nbsp;<span style="color: #00F2C3;">{{program.name}}</span> </h4>
+                <p class="card-text">Domain:&nbsp;<span style="color: #00F2C3;">{{program.domain}}</span> </p>
+                <div class="row">
+                    &nbsp;
+                </div>
+                <button class="btn btn-primary btn-simple btn-sm center" (click)="getProgram(program._id)" [routerLink]="['/program',program._id]" >View</button>
+                <button class="btn btn-warning btn-simple btn-sm center pull-right" (click)="deleteProgram(program._id)" >Delete</button>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
