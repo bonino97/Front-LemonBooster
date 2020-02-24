@@ -1,40 +1,45 @@
 <div class=" content">
   <div class=" row">
     <div class=" col-md-12">
-        <div class="card" *ngIf="program">
-          <div class=" card-header container-fluid">
-              <div class="row">
-                  <div class="col-md-10">
-                      <h3 class="title">{{program.name}}</h3>
-                  </div>
-                  
-                  <div class="col-md-2">
-                      <button class="btn btn-danger btn-simple pull-right" [routerLink]="['/program']" >Back</button> 
-                  </div>
-              </div>
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote">
-              <button class="btn btn-success btn-simple btn-sm center pull-right" [routerLink]="['/edit-program', program._id]"  >Edit Program</button>
-              <h4 class="card-title">Domain: <span style="color: #00F2C3;">{{program.domain}}</span></h4>
-              <p class="card-text"> In Scope: <span style="color: #00F2C3;">{{program.scope}}</span></p>
-              <p class="card-text"> ASNs: </p>
-              <p class="card-text"> CIDRs: </p>
-              <div class="row">
-                  &nbsp;
-              </div>
-              <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain', program._id]" >Findomain</button>
-              &nbsp;
-              <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >Httprobe</button>
-              &nbsp;
-              <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >Dirsearch</button>
-              &nbsp;
-              <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >WafW00f</button>
-              &nbsp;
-              <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >SQLMap</button>
-            </blockquote>
+      <div class="card" *ngIf="program">
+        <div class=" card-header container-fluid">
+            <div class="row">
+                <div class="col-md-10">
+                    <h3 class="title">{{program.name}}</h3>
+                </div>
+                
+                <div class="col-md-2">
+                    <button class="btn btn-danger btn-simple pull-right" [routerLink]="['/program']" >Back</button> 
+                </div>
+            </div>
         </div>
+        <div class="card-body">
+          <blockquote class="blockquote">
+            <button class="btn btn-success btn-simple btn-sm center pull-right" [routerLink]="['/edit-program', program._id]"  >Edit Program</button>
+            <h4 class="card-title">Domain: <span style="color: #00F2C3;">{{program.domain}}</span></h4>
+            <p class="card-text"> In Scope: <span style="color: #00F2C3;">{{program.scope}}</span></p>
+            <p class="card-text"> ASNs: </p>
+            <p class="card-text"> CIDRs: </p>
+            <div class="row">
+                &nbsp;
+            </div>
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showFindomain()" >Findomain</button>
+            &nbsp;
+            <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >Httprobe</button>
+            &nbsp;
+            <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >Dirsearch</button>
+            &nbsp;
+            <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >WafW00f</button>
+            &nbsp;
+            <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >SQLMap</button>
+          </blockquote>
         </div>
+      </div>
+
+      <app-findomain *ngIf="openFindomain"></app-findomain>
+
     </div>
   </div>
 </div>
+
+

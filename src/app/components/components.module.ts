@@ -5,6 +5,7 @@ import { RouterModule } from "@angular/router";
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 
 import { ViewProgramComponent } from '../pages/view-program/view-program.component';
+import { FindomainComponent } from './findomain/findomain.component';
 
 
 
@@ -18,10 +19,12 @@ import { ViewProgramComponent } from '../pages/view-program/view-program.compone
     ReactiveFormsModule
   ],
   declarations: [
-    ViewProgramComponent
+    ViewProgramComponent,
+    FindomainComponent,
   ],
   exports: [
-    ViewProgramComponent
+    ViewProgramComponent,
+    FindomainComponent,
   ]
 })
 export class ComponentsModule { }

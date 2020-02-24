@@ -9,16 +9,21 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './view-program.component.html',
   styleUrls: []
 })
+
+
+
 export class ViewProgramComponent implements OnInit {
   
-  program: Program;
 
+  public program: Program;
+  public openFindomain: boolean;
+  
   constructor(
     public _ProgramService: ProgramService,
     private _route: ActivatedRoute,
     
     ) {
- 
+      
     }
 
   ngOnInit() {
@@ -50,6 +55,9 @@ export class ViewProgramComponent implements OnInit {
       });
   }
 
+  showFindomain(){
+    this.openFindomain = true;
+  }
   
 
 }

@@ -33,7 +33,7 @@ export class ProgramService {
 
   updateProgram(id:string, program: Program):Observable<any>{
     let params = JSON.stringify(program);
-    var programIdUrl = this.programUrl+'/'+ id;
+    let programIdUrl = this.programUrl+'/'+ id;
     let headers = new HttpHeaders().set('Content-Type','application/json'); 
 
     console.log(params);

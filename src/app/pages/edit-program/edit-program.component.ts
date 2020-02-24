@@ -40,7 +40,7 @@ export class EditProgramComponent implements OnInit {
       this.getProgram(id);
       console.log(id);
       return id;
-    });
+    }); 
   }
 
   getProgram(id){
