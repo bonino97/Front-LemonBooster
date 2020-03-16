@@ -1,0 +1,46 @@
+<div class="card" *ngIf="program">
+  <div class=" card-header">
+    <h4 class=" title">Httprobe</h4>
+    <p class=" category">
+      
+      <a href="https://github.com/tomnomnom/httprobe" target="_blank">Httprobe Subdomain Scanner </a>
+    </p>
+  </div>
+  <div class=" card-body">
+
+    <blockquote class="blockquote">
+
+      <div class=" row">
+
+
+          <div class=" col-md-12 ">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>FINDOMAIN FILES</th>
+                  <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody >
+                <tr *ngFor="let file of subdomainsFiles; let i = index">
+                  <td class="text-center">{{i+1}}</td>
+                  <td>{{file}}</td>
+                  <td class="td-actions text-right">
+                    <button class="btn btn-scope btn-simple btn-sm center pull-right" (click)="executeHttprobe(file)" >Execute</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+ 
+
+      </div>  
+
+    </blockquote>
+
+
+  </div>
+</div>

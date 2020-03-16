@@ -17,6 +17,7 @@ export class ViewProgramComponent implements OnInit {
 
   public program: Program;
   public openFindomain: boolean;
+  public openHttprobe: boolean;
   
   constructor(
     public _ProgramService: ProgramService,
@@ -57,6 +58,12 @@ export class ViewProgramComponent implements OnInit {
 
   showFindomain(){
     this.openFindomain = true;
+    this.openHttprobe = false;
+  }
+
+  showHttprobe(){
+    this.openHttprobe = true;
+    this.openFindomain = false;
   }
   
 

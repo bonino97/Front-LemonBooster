@@ -62,9 +62,7 @@ export class FindomainComponent implements OnInit {
   }
 
   loadScope(scope){
-  
     
-
     this.scopeToArray = scope.split(',');
 
     return this.scopeToArray; 

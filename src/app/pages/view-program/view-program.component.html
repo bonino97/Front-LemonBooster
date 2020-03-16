@@ -25,7 +25,7 @@
             </div>
             <button class="btn btn-primary btn-simple btn-sm center" (click)="showFindomain()" >Findomain</button>
             &nbsp;
-            <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >Httprobe</button>
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showHttprobe()" >Httprobe</button>
             &nbsp;
             <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >Dirsearch</button>
             &nbsp;
@@ -37,6 +37,8 @@
       </div>
 
       <app-findomain *ngIf="openFindomain"></app-findomain>
+      <app-httprobe *ngIf="openHttprobe"></app-httprobe>
+
 
     </div>
   </div>
