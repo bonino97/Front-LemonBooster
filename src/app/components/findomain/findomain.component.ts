@@ -4,6 +4,7 @@ import { Program } from 'src/app/models/program.model';
 import { ProgramService } from 'src/app/services/program/program.service';
 import { FindomainService } from '../../services/findomain.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -58,6 +59,21 @@ export class FindomainComponent implements OnInit {
 
     this._FindomainService.executeFindomain(findomain).subscribe((resp:any)=>{
       console.log(resp);
+      if(resp.ok){
+        Swal.fire({
+          title: '<font color="white">Success</font>',
+          html: '<font color="white">'+ resp.message +'</font>',
+          background: '#1e1e2f', 
+          icon: 'success'
+        });  
+      } else {
+        Swal.fire({
+          title: '<font color="white">Error</font>',
+          html: '<font color="white">'+ resp.message +'</font>',
+          background: '#1e1e2f', 
+          icon: 'error'
+        });  
+      }
     });
   }
 

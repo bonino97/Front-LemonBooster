@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProgramService } from 'src/app/services/program/program.service';
 import { HttprobeService } from 'src/app/services/httprobe.service';
 import { ActivatedRoute } from '@angular/router';
+import { Httprobe } from 'src/app/models/httprobe.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-httprobe',
@@ -16,7 +18,7 @@ export class HttprobeComponent implements OnInit {
   
   constructor(
     private _ProgramService: ProgramService,
-    private _HttpService: HttprobeService,
+    private _HttprobeService: HttprobeService,
     private _route: ActivatedRoute
   ) { }
 
@@ -43,12 +45,38 @@ export class HttprobeComponent implements OnInit {
   
   loadFiles(id){
     
-    this._HttpService.getFiles(id).subscribe((resp:any)=>{
+    this._HttprobeService.getFiles(id).subscribe((resp:any)=>{
       this.subdomainsFiles = resp.subdomainFiles;
     });
   }
 
   executeHttprobe(file){
-    console.log(file);
+    let id = this.program._id;
+
+    let httprobe = new Httprobe(
+      id,
+      file
+    );
+    
+    console.log(httprobe);
+
+    this._HttprobeService.executeHttprobe(httprobe).subscribe((resp:any)=>{
+      console.log(resp);
+      if(resp.ok){
+        Swal.fire({
+          title: '<font color="white">Success</font>',
+          html: '<font color="white">'+ resp.message +'</font>',
+          background: '#1e1e2f', 
+          icon: 'success'
+        });  
+      } else {
+        Swal.fire({
+          title: '<font color="white">Error</font>',
+          html: '<font color="white">'+ resp.message +'</font>',
+          background: '#1e1e2f', 
+          icon: 'error'
+        });  
+      }
+    });
   }
 }
