@@ -18,6 +18,7 @@ export class ViewProgramComponent implements OnInit {
   public program: Program;
   public openFindomain: boolean;
   public openHttprobe: boolean;
+  public openAquatone: boolean;
   
   constructor(
     public _ProgramService: ProgramService,
@@ -59,11 +60,19 @@ export class ViewProgramComponent implements OnInit {
   showFindomain(){
     this.openFindomain = true;
     this.openHttprobe = false;
+    this.openAquatone = false;
   }
 
   showHttprobe(){
     this.openHttprobe = true;
     this.openFindomain = false;
+    this.openAquatone = false;
+  }
+
+  showAquatone(){
+    this.openHttprobe = false;
+    this.openFindomain = false;
+    this.openAquatone = true;
   }
   
 

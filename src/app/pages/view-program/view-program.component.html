@@ -27,7 +27,7 @@
             &nbsp;
             <button class="btn btn-primary btn-simple btn-sm center" (click)="showHttprobe()" >Httprobe</button>
             &nbsp;
-            <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >Dirsearch</button>
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showAquatone()" >Aquatone</button>
             &nbsp;
             <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >WafW00f</button>
             &nbsp;
@@ -38,6 +38,7 @@
 
       <app-findomain *ngIf="openFindomain"></app-findomain>
       <app-httprobe *ngIf="openHttprobe"></app-httprobe>
+      <app-aquatone *ngIf="openAquatone"></app-aquatone>
 
 
     </div>

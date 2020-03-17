@@ -78,5 +78,6 @@ export class HttprobeComponent implements OnInit {
         });  
       }
     });
+
   }
 }

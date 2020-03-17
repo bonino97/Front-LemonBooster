@@ -7,6 +7,7 @@ import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { ViewProgramComponent } from '../pages/view-program/view-program.component';
 import { FindomainComponent } from './findomain/findomain.component';
 import { HttprobeComponent } from './httprobe/httprobe.component';
+import { AquatoneComponent } from './aquatone/aquatone.component';
 
 
 
@@ -23,6 +24,7 @@ import { HttprobeComponent } from './httprobe/httprobe.component';
     ViewProgramComponent,
     FindomainComponent,
     HttprobeComponent,
+    AquatoneComponent,
   ],
   exports: [
     ViewProgramComponent,
