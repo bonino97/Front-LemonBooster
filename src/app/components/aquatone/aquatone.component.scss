@@ -1,9 +1,9 @@
-.btn-scope{
+.btn.btn-simple{
     color: #e6f370;
     border-color: #e6f370;
 }
 
-.btn-scope:hover{
+.btn.btn-simple:hover, .btn.btn-simple:focus, .btn.btn-simple:active, .btn.btn-simple:not(:disabled):not(.disabled):active, .navbar .navbar-nav > a.btn.btn-simple:hover, .navbar .navbar-nav > a.btn.btn-simple:focus, .navbar .navbar-nav > a.btn.btn-simple:active, .navbar .navbar-nav > a.btn.btn-simple:not(:disabled):not(.disabled):active {
     color: #f5ff9a;
     border-color: #f5ff9a;
 }
