@@ -62,16 +62,25 @@ export class ProgramComponent implements OnInit {
       reverseButtons: false
     }).then((result) => {
       if(result.value){
-        swal.fire({
-          title: '<font color="white">Deleted</font>',
-          html: '<font color="white">The program has been deleted</font>',
-          background: '#1e1e2f', 
-          icon: 'success'
-        });        
+               
         this._ProgramService
         .deleteProgram(id)
           .subscribe((resp:any) => {
             console.log(resp);
+
+            this._ProgramService.getPrograms()
+              .subscribe((resp:any)=>{
+                this.programs = resp.programs
+                swal.fire({
+                  title: '<font color="white">Deleted</font>',
+                  html: '<font color="white">The program has been deleted</font>',
+                  background: '#1e1e2f', 
+                  icon: 'success'
+                }); 
+              });
+              
+          }, error => {
+            console.log(error);
           });
       }
     });
