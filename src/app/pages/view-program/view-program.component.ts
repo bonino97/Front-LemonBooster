@@ -20,6 +20,7 @@ export class ViewProgramComponent implements OnInit {
   public openHttprobe: boolean;
   public openAquatone: boolean;
   public openSubjack: boolean;
+  public openHakcheckurl: boolean;
 
 
   constructor(
@@ -65,6 +66,7 @@ export class ViewProgramComponent implements OnInit {
     this.openHttprobe = false;
     this.openAquatone = false;
     this.openSubjack = false;
+    this.openHakcheckurl = false;
 
     switch(expression){
       case 1: {
@@ -84,7 +86,7 @@ export class ViewProgramComponent implements OnInit {
         break;
       }
       case 5: {
-
+        this.openHakcheckurl = true;
       }
     }
   }

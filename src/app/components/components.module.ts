@@ -9,6 +9,8 @@ import { FindomainComponent } from './findomain/findomain.component';
 import { HttprobeComponent } from './httprobe/httprobe.component';
 import { AquatoneComponent } from './aquatone/aquatone.component';
 import { SubjackComponent } from './subjack/subjack.component';
+import { HakcheckurlComponent } from './hakcheckurl/hakcheckurl.component';
+import { DirsearchComponent } from './dirsearch/dirsearch.component';
 
 
 
@@ -27,6 +29,8 @@ import { SubjackComponent } from './subjack/subjack.component';
     HttprobeComponent,
     AquatoneComponent,
     SubjackComponent,
+    HakcheckurlComponent,
+    DirsearchComponent,
   ],
   exports: [
     ViewProgramComponent,
