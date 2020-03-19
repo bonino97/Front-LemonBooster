@@ -19,7 +19,9 @@ export class ViewProgramComponent implements OnInit {
   public openFindomain: boolean;
   public openHttprobe: boolean;
   public openAquatone: boolean;
-  
+  public openSubjack: boolean;
+
+
   constructor(
     public _ProgramService: ProgramService,
     private _route: ActivatedRoute,
@@ -57,23 +59,33 @@ export class ViewProgramComponent implements OnInit {
       });
   }
 
-  showFindomain(){
-    this.openFindomain = true;
+  showComponent(expression){
+
+    this.openFindomain = false;
     this.openHttprobe = false;
     this.openAquatone = false;
-  }
+    this.openSubjack = false;
 
-  showHttprobe(){
-    this.openHttprobe = true;
-    this.openFindomain = false;
-    this.openAquatone = false;
-  }
+    switch(expression){
+      case 1: {
+        this.openFindomain = true;
+        break;
+      }
+      case 2: {
+        this.openHttprobe = true;
+        break;
+      }
+      case 3: {
+        this.openAquatone = true;
+        break;
+      }
+      case 4: {
+        this.openSubjack = true;
+        break;
+      }
+      case 5: {
 
-  showAquatone(){
-    this.openHttprobe = false;
-    this.openFindomain = false;
-    this.openAquatone = true;
+      }
+    }
   }
-  
-
 }

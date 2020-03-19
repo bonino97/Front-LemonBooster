@@ -23,15 +23,15 @@
             <div class="row">
                 &nbsp;
             </div>
-            <button class="btn btn-primary btn-simple btn-sm center" (click)="showFindomain()" >Findomain</button>
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(1)" >Findomain</button>
             &nbsp;
-            <button class="btn btn-primary btn-simple btn-sm center" (click)="showHttprobe()" >Httprobe</button>
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(2)" >Httprobe</button>
             &nbsp;
-            <button class="btn btn-primary btn-simple btn-sm center" (click)="showAquatone()" >Aquatone</button>
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(3)" >Aquatone</button>
             &nbsp;
-            <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >WafW00f</button>
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(4)" >Subjack</button>
             &nbsp;
-            <button class="btn btn-primary btn-simple btn-sm center" [routerLink]="['/findomain']" >SQLMap</button>
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(5)" >Hakcheckurl</button>
           </blockquote>
         </div>
       </div>
@@ -39,6 +39,8 @@
       <app-findomain *ngIf="openFindomain"></app-findomain>
       <app-httprobe *ngIf="openHttprobe"></app-httprobe>
       <app-aquatone *ngIf="openAquatone"></app-aquatone>
+      <app-subjack *ngIf="openSubjack"></app-subjack>
+
 
 
     </div>

@@ -8,6 +8,7 @@ import { ViewProgramComponent } from '../pages/view-program/view-program.compone
 import { FindomainComponent } from './findomain/findomain.component';
 import { HttprobeComponent } from './httprobe/httprobe.component';
 import { AquatoneComponent } from './aquatone/aquatone.component';
+import { SubjackComponent } from './subjack/subjack.component';
 
 
 
@@ -25,6 +26,7 @@ import { AquatoneComponent } from './aquatone/aquatone.component';
     FindomainComponent,
     HttprobeComponent,
     AquatoneComponent,
+    SubjackComponent,
   ],
   exports: [
     ViewProgramComponent,
