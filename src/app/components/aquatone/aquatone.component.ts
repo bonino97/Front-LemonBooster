@@ -61,7 +61,6 @@ export class AquatoneComponent implements OnInit {
       );
 
       this._AquatoneService.executeAquatone(aquatone).subscribe((resp:any) => {
-        console.log(resp);
         if(resp.ok){
           Swal.fire({
             title: '<font color="white">Success</font>',
@@ -80,6 +79,5 @@ export class AquatoneComponent implements OnInit {
       });
       
   }
-
-
 }
+

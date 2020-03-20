@@ -1,3 +1,220 @@
-<p>
-  dirsearch works!
-</p>
+<div class="card" *ngIf="program">
+  <div class=" card-header">
+    <h4 class=" title">Dirsearch</h4>
+    <p class=" category">
+      
+      <a href="https://github.com/maurosoria/dirsearch" target="_blank">Dirsearch Directories Brute Force </a>
+    </p>
+  </div>
+  <div class=" card-body">
+
+    <blockquote class="blockquote">
+
+      <div class=" row">
+
+
+          <div class=" col-md-12 ">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>HAKRAWLER FILES</th>
+                  <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody >
+                <tr *ngFor="let file of hakrawlerFiles; let i = index">
+                  <td class="text-center">{{i+1}}</td>
+                  <td>{{file}}</td>
+                  <td class="td-actions text-right">
+                    <button class="btn btn-success btn-simple btn-sm center pull-right" (click)="viewSubdomains(file)">Subdomains</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+ 
+
+      </div>  
+
+    </blockquote>
+
+
+  </div>
+</div>
+
+<div class="card card-nav-tabs" *ngIf="openSubdomainCard">
+  <div class="card-header card-header-success">
+    Subdomains
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <button type="button" class="btn btn-success btn-simple btn-sm" (click)="showSubdomains(1)" >200</button>
+      &nbsp;
+      &nbsp;
+      <button type="button" class="btn btn-primary btn-simple btn-sm" (click)="showSubdomains(2)">403</button>
+      &nbsp;
+      &nbsp;
+      <button type="button" class="btn btn-danger btn-simple btn-sm" (click)="showSubdomains(3)">500</button>
+      &nbsp;
+      &nbsp;
+      <button type="button" class="btn btn-warning btn-simple btn-sm" (click)="showSubdomains(4)">400</button>
+      &nbsp;
+      &nbsp;
+      <button type="button" class="btn btn-info btn-simple btn-sm" (click)="showSubdomains(5)">Other</button>
+
+      <form class="form-inline ml-auto pull-right" *ngIf="openTable">
+        <div class="form-group no-border">
+          <input type="text" class="form-control" placeholder="Search Subdomain" (keyup)="searchValue($event)" />
+        </div>
+        <button type="submit" class="btn btn-link btn-icon btn-round">
+          <i class="tim-icons icon-zoom-split"></i>
+        </button>
+      </form>
+      
+      <hr *ngIf="openTable" style="color: #ffffff !important;"/>
+
+      <table class="table" *ngIf="open200">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>SUBDOMAIN</th>
+            <th>LISTS</th>
+            <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let subdomain of subdomain200; let i = index">
+              <td class="text-center">{{i+1}}</td>
+              <td >
+                {{subdomain}}
+              </td>
+              <td>
+                <select class="custom-select" [(ngModel)]="selectList" (change)="captureList()">
+                  <option selected *ngFor="let list of dirsearchLists" >{{list}}</option>
+                </select>
+              </td>
+              <td class="td-actions text-right">
+                <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeDirsearch(subdomain)" >BruteForce</button>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+
+      <table class="table" *ngIf="open403">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>SUBDOMAIN</th>
+            <th>LISTS</th>
+            <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let subdomain of subdomain403; let i = index">
+            <td class="text-center">{{i+1}}</td>
+            <td>{{subdomain}}</td>
+            <td>
+              
+              <select class="custom-select" >
+                <option selected>Choose...</option>
+                <option *ngFor="let list of dirsearchLists">{{list}}</option>
+              </select>
+
+            </td>
+            <td class="td-actions text-right">
+              <button class="btn btn-warning btn-simple btn-sm center pull-right" (click)="viewSubdomains(file)">BruteForce</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table" *ngIf="open400">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>SUBDOMAIN</th>
+            <th>LISTS</th>
+            <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let subdomain of subdomain400; let i = index">
+            <td class="text-center">{{i+1}}</td>
+            <td>{{subdomain}}</td>
+            <td>
+              
+              <select class="custom-select" >
+                <option selected>Choose...</option>
+                <option *ngFor="let list of dirsearchLists">{{list}}</option>
+              </select>
+
+            </td>
+            <td class="td-actions text-right">
+              <button class="btn btn-warning btn-simple btn-sm center pull-right" (click)="viewSubdomains(file)">BruteForce</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table" *ngIf="open500">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>SUBDOMAIN</th>
+            <th>LISTS</th>
+            <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let subdomain of subdomain500; let i = index">
+            <td class="text-center">{{i+1}}</td>
+            <td>{{subdomain}}</td>
+            <td>
+              
+              <select class="custom-select" >
+                <option selected>Choose...</option>
+                <option *ngFor="let list of dirsearchLists">{{list}}</option>
+              </select>
+
+            </td>
+            <td class="td-actions text-right">
+              <button class="btn btn-warning btn-simple btn-sm center pull-right" (click)="viewSubdomains(file)">BruteForce</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table" *ngIf="openOthers">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>CODE + SUBDOMAIN</th>
+            <th>LISTS</th>
+            <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let subdomain of subdomainOthers; let i = index">
+            <td class="text-center">{{i+1}}</td>
+            <td>{{subdomain}}</td>
+            <td>
+              
+              <select class="custom-select" (change)="selectedList($event.target.value)" [(ngModel)]="selectList">
+                <option selected>Choose...</option>
+                <option [value]="list" *ngFor="let list of dirsearchLists">{{list}}</option>
+              </select>
+
+            </td>
+            <td class="td-actions text-right">
+              <button class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeDirsearch(file,list)">BruteForce</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </blockquote>
+  </div>
+</div>
