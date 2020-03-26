@@ -1,0 +1,80 @@
+<div class="card" *ngIf="program">
+  <div class=" card-header">
+    <h4 class=" title">Linkfinder</h4>
+    <p class=" category">
+      
+      <a href="https://github.com/GerbenJavado/LinkFinder" target="_blank">Linkfinder - Web Js Link Finder</a>
+    </p>
+  </div>
+  <div class=" card-body">
+
+    <blockquote class="blockquote">
+
+      <div class=" row">
+
+
+          <div class=" col-md-12 ">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>HAKRAWLER JS FILES</th>
+                  <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody >
+                <tr *ngFor="let file of hakrawlerJsFiles; let i = index">
+                  <td class="text-center">{{i+1}}</td>
+                  <td>{{file}}</td>
+                  <td class="td-actions text-right">
+                    <button class="btn btn-success btn-simple btn-sm center pull-right" (click)="viewJsFile(file)">Execute</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+ 
+
+      </div>  
+
+    </blockquote>
+
+
+  </div>
+</div>
+
+
+<div class="card card-nav-tabs" *ngIf="openJsFiles">
+  <div class="card-header card-header-success">
+    JS Links
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+
+      <!-- <hr *ngIf="openTable" style="color: #ffffff !important;"/> -->
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>LINKS</th>
+            <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let link of jsLinks; let i = index">
+              <td class="text-center">{{i+1}}</td>
+              <td >
+                {{link}}
+              </td>
+              <td class="td-actions text-right">
+                <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(link)" >Analyze</button>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </blockquote>
+  </div>
+</div>

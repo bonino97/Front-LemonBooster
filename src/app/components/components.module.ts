@@ -12,6 +12,7 @@ import { SubjackComponent } from './subjack/subjack.component';
 import { HakcheckurlComponent } from './hakcheckurl/hakcheckurl.component';
 import { DirsearchComponent } from './dirsearch/dirsearch.component';
 import { HakrawlerComponent } from './hakrawler/hakrawler.component';
+import { LinkfinderComponent } from './linkfinder/linkfinder.component';
 
 
 
@@ -33,6 +34,7 @@ import { HakrawlerComponent } from './hakrawler/hakrawler.component';
     HakcheckurlComponent,
     DirsearchComponent,
     HakrawlerComponent,
+    LinkfinderComponent,
   ],
   exports: [
     ViewProgramComponent,

@@ -23,6 +23,7 @@ export class ViewProgramComponent implements OnInit {
   public openHakcheckurl: boolean;
   public openDirsearch: boolean;
   public openHakrawler: boolean;
+  public openLinkfinder: boolean;
 
   constructor(
     public _ProgramService: ProgramService,
@@ -70,6 +71,7 @@ export class ViewProgramComponent implements OnInit {
     this.openHakcheckurl = false;
     this.openDirsearch = false;
     this.openHakrawler = false;
+    this.openLinkfinder = false;
 
     switch(expression){
       case 1: {
@@ -98,6 +100,10 @@ export class ViewProgramComponent implements OnInit {
       }
       case 7: {
         this.openHakrawler = true;
+        break;
+      }
+      case 8: {
+        this.openLinkfinder = true;
         break;
       }
     }
