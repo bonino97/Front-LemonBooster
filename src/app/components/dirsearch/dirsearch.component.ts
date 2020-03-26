@@ -15,7 +15,7 @@ import { ExecDirsearch } from 'src/app/models/exec-dirsearch.model';
 export class DirsearchComponent implements OnInit {
 
   public program: any;
-  public hakrawlerFiles: [];
+  public hakcheckurlFiles: [];
   public dirsearchLists: any = [] ;
   public subdomainsData: any = [] ;
   public subdomain200: any = [];
@@ -72,7 +72,7 @@ export class DirsearchComponent implements OnInit {
       
       console.log(resp);
 
-      this.hakrawlerFiles = resp.files;
+      this.hakcheckurlFiles = resp.files;
     });
   }
 
@@ -86,6 +86,13 @@ export class DirsearchComponent implements OnInit {
   }
 
   viewSubdomains(file){
+
+    this.subdomain200 = [];
+    this.subdomain403 = [];
+    this.subdomain400 = [];
+    this.subdomain500 = [];
+    this.subdomainOthers = [];
+
     let id = this.program._id;
 
     let dirsearch = new Dirsearch(
@@ -134,8 +141,6 @@ export class DirsearchComponent implements OnInit {
         }
       }
     });
-    
-    console.log(this.subdomainOthers);
     
   }
   

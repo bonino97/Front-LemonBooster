@@ -11,6 +11,7 @@ import { AquatoneComponent } from './aquatone/aquatone.component';
 import { SubjackComponent } from './subjack/subjack.component';
 import { HakcheckurlComponent } from './hakcheckurl/hakcheckurl.component';
 import { DirsearchComponent } from './dirsearch/dirsearch.component';
+import { HakrawlerComponent } from './hakrawler/hakrawler.component';
 
 
 
@@ -31,6 +32,7 @@ import { DirsearchComponent } from './dirsearch/dirsearch.component';
     SubjackComponent,
     HakcheckurlComponent,
     DirsearchComponent,
+    HakrawlerComponent,
   ],
   exports: [
     ViewProgramComponent,
