@@ -103,7 +103,6 @@
           <tr>
             <th class="text-center">#</th>
             <th>SUBDOMAIN</th>
-            <th>LISTS</th>
             <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
           </tr>
         </thead>
@@ -111,14 +110,6 @@
           <tr *ngFor="let subdomain of subdomain403; let i = index">
             <td class="text-center">{{i+1}}</td>
             <td>{{subdomain}}</td>
-            <td>
-              
-              <select class="custom-select" >
-                <option selected>Choose...</option>
-                <option *ngFor="let list of dirsearchLists">{{list}}</option>
-              </select>
-
-            </td>
             <td class="td-actions text-right">
               <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(subdomain)" >Analyze</button>
             </td>
@@ -131,7 +122,6 @@
           <tr>
             <th class="text-center">#</th>
             <th>SUBDOMAIN</th>
-            <th>LISTS</th>
             <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
           </tr>
         </thead>
@@ -139,14 +129,6 @@
           <tr *ngFor="let subdomain of subdomain400; let i = index">
             <td class="text-center">{{i+1}}</td>
             <td>{{subdomain}}</td>
-            <td>
-              
-              <select class="custom-select" >
-                <option selected>Choose...</option>
-                <option *ngFor="let list of dirsearchLists">{{list}}</option>
-              </select>
-
-            </td>
             <td class="td-actions text-right">
               <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(subdomain)" >Analyze</button>
             </td>
@@ -159,7 +141,6 @@
           <tr>
             <th class="text-center">#</th>
             <th>SUBDOMAIN</th>
-            <th>LISTS</th>
             <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
           </tr>
         </thead>
@@ -167,14 +148,6 @@
           <tr *ngFor="let subdomain of subdomain500; let i = index">
             <td class="text-center">{{i+1}}</td>
             <td>{{subdomain}}</td>
-            <td>
-              
-              <select class="custom-select" >
-                <option selected>Choose...</option>
-                <option *ngFor="let list of dirsearchLists">{{list}}</option>
-              </select>
-
-            </td>
             <td class="td-actions text-right">
               <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(subdomain)" >Analyze</button>
             </td>
@@ -187,7 +160,6 @@
           <tr>
             <th class="text-center">#</th>
             <th>CODE + SUBDOMAIN</th>
-            <th>LISTS</th>
             <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
           </tr>
         </thead>
@@ -195,14 +167,6 @@
           <tr *ngFor="let subdomain of subdomainOthers; let i = index">
             <td class="text-center">{{i+1}}</td>
             <td>{{subdomain}}</td>
-            <td>
-              
-              <select class="custom-select" (change)="selectedList($event.target.value)" [(ngModel)]="selectList">
-                <option selected>Choose...</option>
-                <option [value]="list" *ngFor="let list of dirsearchLists">{{list}}</option>
-              </select>
-
-            </td>
             <td class="td-actions text-right">
               <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(subdomain)" >Analyze</button>
             </td>

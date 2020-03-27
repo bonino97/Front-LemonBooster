@@ -30,7 +30,7 @@ export class LinkfinderComponent implements OnInit {
   public openOthers: boolean;
   public openTable: boolean;
 
-  public jsLinks: any = [];
+  public allLinks: any = [];
 
   public openJsFiles: boolean = false;
 
@@ -89,8 +89,7 @@ export class LinkfinderComponent implements OnInit {
 
     this._LinkfinderService.getJsLinks(linkfinder)
       .subscribe((resp:any) => {
-        console.log(resp);
-
+        this.allLinks = resp.hakcheckurlFile;
         this.loadSubdomainsData(resp.hakcheckurlFile)
 
       });
@@ -98,8 +97,6 @@ export class LinkfinderComponent implements OnInit {
     this.openJsFiles = true;
   }
   loadSubdomainsData(subdomainsData: []) {
-    
-    console.log(subdomainsData)
 
     subdomainsData.forEach((data: Array<string>, i) => {
       let code = data.toString().substr(0,3).trim();
@@ -193,6 +190,13 @@ export class LinkfinderComponent implements OnInit {
         });  
       }
     });
+  }
+
+  searchValue(event){
+
+    const inputValue = event.target.value;
+    this.allLinks.filter(link => link.toLowerCase().includes(inputValue));
+    console.log(this.allLinks.filter(link => link.toLowerCase().includes(inputValue)));
   }
 
 }
