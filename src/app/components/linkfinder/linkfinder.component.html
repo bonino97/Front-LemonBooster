@@ -28,7 +28,7 @@
                   <td class="text-center">{{i+1}}</td>
                   <td>{{file}}</td>
                   <td class="td-actions text-right">
-                    <button class="btn btn-success btn-simple btn-sm center pull-right" (click)="viewJsFile(file)">Execute</button>
+                    <button class="btn btn-success btn-simple btn-sm center pull-right" (click)="viewSubdomains(file)">Execute</button>
                   </td>
                 </tr>
               </tbody>
@@ -48,33 +48,171 @@
 
 <div class="card card-nav-tabs" *ngIf="openJsFiles">
   <div class="card-header card-header-success">
-    JS Links
+    Subdomains
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
+      <button type="button" class="btn btn-success btn-simple btn-sm" (click)="showSubdomains(1)" >200</button>
+      &nbsp;
+      &nbsp;
+      <button type="button" class="btn btn-primary btn-simple btn-sm" (click)="showSubdomains(2)">403</button>
+      &nbsp;
+      &nbsp;
+      <button type="button" class="btn btn-danger btn-simple btn-sm" (click)="showSubdomains(3)">500</button>
+      &nbsp;
+      &nbsp;
+      <button type="button" class="btn btn-warning btn-simple btn-sm" (click)="showSubdomains(4)">400</button>
+      &nbsp;
+      &nbsp;
+      <button type="button" class="btn btn-info btn-simple btn-sm" (click)="showSubdomains(5)">Other</button>
 
-      <!-- <hr *ngIf="openTable" style="color: #ffffff !important;"/> -->
+      <form class="form-inline ml-auto pull-right" *ngIf="openTable">
+        <div class="form-group no-border">
+          <input type="text" class="form-control" placeholder="Search Subdomain" (keyup)="searchValue($event)" />
+        </div>
+        <button type="submit" class="btn btn-link btn-icon btn-round">
+          <i class="tim-icons icon-zoom-split"></i>
+        </button>
+      </form>
+      
+      <hr *ngIf="openTable" style="color: #ffffff !important;"/>
 
-      <table class="table">
+      <table class="table" *ngIf="open200">
         <thead>
           <tr>
             <th class="text-center">#</th>
-            <th>LINKS</th>
+            <th>SUBDOMAIN</th>
             <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
           </tr>
         </thead>
         <tbody >
-            <tr *ngFor="let link of jsLinks; let i = index">
+            <tr *ngFor="let subdomain of subdomain200; let i = index">
               <td class="text-center">{{i+1}}</td>
               <td >
-                {{link}}
+                {{subdomain}}
               </td>
               <td class="td-actions text-right">
-                <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(link)" >Analyze</button>
+                <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(subdomain)" >Analyze</button>
               </td>
             </tr>
         </tbody>
       </table>
+
+      <table class="table" *ngIf="open403">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>SUBDOMAIN</th>
+            <th>LISTS</th>
+            <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let subdomain of subdomain403; let i = index">
+            <td class="text-center">{{i+1}}</td>
+            <td>{{subdomain}}</td>
+            <td>
+              
+              <select class="custom-select" >
+                <option selected>Choose...</option>
+                <option *ngFor="let list of dirsearchLists">{{list}}</option>
+              </select>
+
+            </td>
+            <td class="td-actions text-right">
+              <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(subdomain)" >Analyze</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table" *ngIf="open400">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>SUBDOMAIN</th>
+            <th>LISTS</th>
+            <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let subdomain of subdomain400; let i = index">
+            <td class="text-center">{{i+1}}</td>
+            <td>{{subdomain}}</td>
+            <td>
+              
+              <select class="custom-select" >
+                <option selected>Choose...</option>
+                <option *ngFor="let list of dirsearchLists">{{list}}</option>
+              </select>
+
+            </td>
+            <td class="td-actions text-right">
+              <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(subdomain)" >Analyze</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table" *ngIf="open500">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>SUBDOMAIN</th>
+            <th>LISTS</th>
+            <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let subdomain of subdomain500; let i = index">
+            <td class="text-center">{{i+1}}</td>
+            <td>{{subdomain}}</td>
+            <td>
+              
+              <select class="custom-select" >
+                <option selected>Choose...</option>
+                <option *ngFor="let list of dirsearchLists">{{list}}</option>
+              </select>
+
+            </td>
+            <td class="td-actions text-right">
+              <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(subdomain)" >Analyze</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table" *ngIf="openOthers">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>CODE + SUBDOMAIN</th>
+            <th>LISTS</th>
+            <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let subdomain of subdomainOthers; let i = index">
+            <td class="text-center">{{i+1}}</td>
+            <td>{{subdomain}}</td>
+            <td>
+              
+              <select class="custom-select" (change)="selectedList($event.target.value)" [(ngModel)]="selectList">
+                <option selected>Choose...</option>
+                <option [value]="list" *ngFor="let list of dirsearchLists">{{list}}</option>
+              </select>
+
+            </td>
+            <td class="td-actions text-right">
+              <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeLinkfinder(subdomain)" >Analyze</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
     </blockquote>
   </div>
 </div>
+
+
+

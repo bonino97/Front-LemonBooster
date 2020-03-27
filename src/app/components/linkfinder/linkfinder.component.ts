@@ -17,6 +17,19 @@ export class LinkfinderComponent implements OnInit {
   public program: any;
   public hakrawlerJsFiles: [];
 
+  public subdomain200: any = [];
+  public subdomain403: any = [];
+  public subdomain400: any = [];
+  public subdomain500: any = [];
+  public subdomainOthers: any = [];
+
+  public open200: boolean;
+  public open403: boolean;
+  public open400: boolean;
+  public open500: boolean;
+  public openOthers: boolean;
+  public openTable: boolean;
+
   public jsLinks: any = [];
 
   public openJsFiles: boolean = false;
@@ -59,7 +72,13 @@ export class LinkfinderComponent implements OnInit {
     });
   }
 
-  viewJsFile(file){
+  viewSubdomains(file){
+
+    this.subdomain200 = [];
+    this.subdomain403 = [];
+    this.subdomain400 = [];
+    this.subdomain500 = [];
+    this.subdomainOthers = [];
 
     let id = this.program._id;
 
@@ -71,10 +90,82 @@ export class LinkfinderComponent implements OnInit {
     this._LinkfinderService.getJsLinks(linkfinder)
       .subscribe((resp:any) => {
         console.log(resp);
-        this.jsLinks = resp.hakrawlerFile;
+
+        this.loadSubdomainsData(resp.hakcheckurlFile)
+
       });
     
     this.openJsFiles = true;
+  }
+  loadSubdomainsData(subdomainsData: []) {
+    
+    console.log(subdomainsData)
+
+    subdomainsData.forEach((data: Array<string>, i) => {
+      let code = data.toString().substr(0,3).trim();
+      let subdomain = data.toString().substr(3,data.length).trim();
+
+      switch(code){
+        case '200':{
+          this.subdomain200.push(subdomain);
+          break;
+        } 
+        case '403': {
+          this.subdomain403.push(subdomain);
+          break;
+        }
+        case '401': {
+          this.subdomain403.push(subdomain);
+          break;
+        }
+        case '400': {
+          this.subdomain400.push(subdomain);
+          break;
+        }
+        case '500': {
+          this.subdomain500.push(subdomain);
+          break;
+        }
+        default: {
+          this.subdomainOthers.push(data);
+          break;
+        }
+      }
+    });
+
+  }
+
+  showSubdomains(expression){
+
+    this.open200 = false;
+    this.open403 = false;
+    this.open400 = false;
+    this.open500 = false;
+    this.openOthers = false;
+    this.openTable = true;
+    
+    switch(expression){
+      case 1: {
+        this.open200 = true;
+        break;
+      }
+      case 2: {
+        this.open403 = true;
+        break;
+      }
+      case 3: {
+        this.open400 = true;
+        break;
+      }
+      case 4: {
+        this.open500 = true;
+        break;
+      }
+      case 5: {
+        this.openOthers = true;
+        break;
+      }
+    }
   }
 
   executeLinkfinder(link){
