@@ -1,0 +1,73 @@
+<div class=" content">
+  <div class=" row">
+    <div class=" col-md-8">
+      
+      <div class="card">
+        <div class="card-header">
+
+          <h4 class="card-title">Findomain</h4>
+          
+          <p class=" category">
+            <a href="https://github.com/Edu4rdSHL/findomain" target="_blank">Findomain -Web Subdomain Enumeration</a>
+          </p>
+
+        </div>
+        <div class=" card-body">
+          <blockquote class="blockquote">
+            <form [formGroup]="form" (ngSubmit)="onExecute()">
+              <div class=" row mb-3 mt-3">
+                <div class=" col-md-10">
+                  <div class=" form-group">
+                    <label for="url"> URL to Enumerate: &nbsp;&nbsp;&nbsp;<span style="color: rgb(241, 66, 66);">* Without HTTP/HTTPS</span></label>
+                    <input
+                      formControlName="url"
+                      class=" form-control"
+                      placeholder="URL"
+                      type="text"
+                      (keyup)="searchValue($event)"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class=" row mb-5">
+                <div class=" col-md-12">
+                  <div class=" form-group">
+
+                    
+                    <div class="form-check form-check-inline col-md-12">
+                      <label class="form-check-label">
+                        <input class="form-check-input" formControlName="resolvable" type="checkbox">
+                        <span class="form-check-sign"><span style="color: rgb(209, 6, 165);">-r&nbsp;:</span>&nbsp;Make a search of only resolvable subdomains</span>
+                      </label>
+                    </div>
+                    <hr>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class=" row mb-3">
+                <div class=" col-md-12">
+                  <div class=" form-group">
+
+                    <label for="program"><h6>Syntax:</h6><h5><span style="color: rgb(209, 6, 165);">{{syntax}}</span></h5></label>
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <button class="btn btn-success btn-simple" type="submit" [disabled]="form.invalid">Execute</button> 
+                </div>
+              </div>
+
+            </form>
+          </blockquote>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

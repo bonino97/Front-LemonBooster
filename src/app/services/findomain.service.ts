@@ -13,7 +13,10 @@ import { Findomain } from '../models/findomain.model';
 })
 export class FindomainService {
 
-  readonly findomainUrl = Environment.apiUrl + '/Findomain';
+
+
+  readonly findomainUrl = Environment.apiUrl + '/Findomain/';
+  readonly singleFindomainUrl = `${this.findomainUrl}Single`
 
   constructor(
     public http: HttpClient,
@@ -27,6 +30,20 @@ export class FindomainService {
 
     return this.http.post(this.findomainUrl, params, {headers:headers});
     
+  }
+
+  executeSingleFindomain(resp: any) {
+    let params = JSON.stringify(resp);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    
+    return this.http.post(this.singleFindomainUrl, params, {headers:headers});
+  }
+
+  makeFindomainSyntax(resp: any) {
+    let params = JSON.stringify(resp);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    
+    return this.http.put(this.singleFindomainUrl, params, {headers:headers});
   }
 
 

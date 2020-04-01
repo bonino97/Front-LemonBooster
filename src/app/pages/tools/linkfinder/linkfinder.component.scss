@@ -1,0 +1,12 @@
+.form-check .form-check-sign::after {
+    font-family: "nucleo";
+    content: "";
+    top: 0px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0;
+    color: #ffffff;
+    font-weight: 600;
+    border: 0;
+    background-color: rgb(209, 6, 165);
+}

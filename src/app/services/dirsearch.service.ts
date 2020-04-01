@@ -11,9 +11,11 @@ import { ExecDirsearch } from '../models/exec-dirsearch.model';
 })
 export class DirsearchService {
 
+
   readonly dirsearchUrl = Environment.apiUrl + '/Dirsearch/';
   readonly dirsearchDataUrl = Environment.apiUrl + '/Dirsearch/Status';
   readonly dirsearchLists = Environment.apiUrl + '/Dirsearch/Lists';
+  readonly dirsearchSingle = Environment.apiUrl + '/Dirsearch/Single';
 
 
   constructor(
@@ -45,6 +47,20 @@ export class DirsearchService {
     let headers = new HttpHeaders().set('Content-Type','application/json');
     console.log(params);
     return this.http.post(this.dirsearchUrl, params, {headers:headers});
+  }
+
+  executeSingleDirsearch(resp: any) {
+    let params = JSON.stringify(resp);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    
+    return this.http.post(this.dirsearchSingle, params, {headers:headers});
+  }
+
+  makeDirsearchSyntax(resp){
+    let params = JSON.stringify(resp);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    
+    return this.http.put(this.dirsearchSingle, params, {headers:headers});
   }
 
 }

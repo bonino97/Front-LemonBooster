@@ -18,6 +18,24 @@ export const ROUTES: RouteInfo[] = [
     title: "Findomain",
     icon: "icon-atom",
     class: ""
+  },
+  {
+    path: "/linkfinder",
+    title: "LinkFinder",
+    icon: "icon-bullet-list-67",
+    class: ""
+  },
+  {
+    path: "/arjun",
+    title: "Arjun",
+    icon: "icon-app",
+    class: ""
+  },
+  {
+    path: "/dirsearch",
+    title: "Dirsearch",
+    icon: "icon-attach-87",
+    class: ""
   }
 ];
 

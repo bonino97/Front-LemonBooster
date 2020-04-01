@@ -12,7 +12,8 @@ import { ExecLinkfinder } from '../models/exec-linkfinder.model';
 export class LinkfinderService {
 
   readonly linkfinderUrl = Environment.apiUrl + '/Linkfinder/';
-  readonly linkfinderDataUrl = this.linkfinderUrl + '/Links/'
+  readonly linkfinderDataUrl = this.linkfinderUrl + 'Links/';
+  readonly linkfinderSyntax = this.linkfinderUrl + 'Single/';
 
   constructor(
     public http: HttpClient,
@@ -36,9 +37,22 @@ export class LinkfinderService {
     let params = JSON.stringify(linkfinder);
     let headers = new HttpHeaders().set('Content-Type','application/json');
 
-    console.log(params);
-
     return this.http.post(this.linkfinderUrl, params, {headers:headers});
   }
 
+  makeLinkFinderSyntax(resp){
+    let params = JSON.stringify(resp);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    
+    return this.http.put(this.linkfinderSyntax, params, {headers:headers});
+  }
+
+  executeSingleLinkFinder(resp){
+    let params = JSON.stringify(resp);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    
+    return this.http.post(this.linkfinderSyntax, params, {headers:headers});
+  }
+
+  
 }

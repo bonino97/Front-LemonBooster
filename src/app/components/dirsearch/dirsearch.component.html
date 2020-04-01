@@ -93,6 +93,7 @@
               </td>
               <td>
                 <select class="custom-select" [(ngModel)]="selectList" (change)="captureList()">
+                  <option selected>Choose...</option>
                   <option selected *ngFor="let list of dirsearchLists" >{{list}}</option>
                 </select>
               </td>
@@ -117,15 +118,13 @@
             <td class="text-center">{{i+1}}</td>
             <td>{{subdomain}}</td>
             <td>
-              
-              <select class="custom-select" >
+              <select class="custom-select" [(ngModel)]="selectList" (change)="captureList()">
                 <option selected>Choose...</option>
-                <option *ngFor="let list of dirsearchLists">{{list}}</option>
+                <option selected *ngFor="let list of dirsearchLists" >{{list}}</option>
               </select>
-
             </td>
             <td class="td-actions text-right">
-              <button class="btn btn-warning btn-simple btn-sm center pull-right" (click)="viewSubdomains(file)">BruteForce</button>
+              <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeDirsearch(subdomain)" >BruteForce</button>
             </td>
           </tr>
         </tbody>
@@ -145,15 +144,13 @@
             <td class="text-center">{{i+1}}</td>
             <td>{{subdomain}}</td>
             <td>
-              
-              <select class="custom-select" >
+              <select class="custom-select" [(ngModel)]="selectList" (change)="captureList()">
                 <option selected>Choose...</option>
-                <option *ngFor="let list of dirsearchLists">{{list}}</option>
+                <option selected *ngFor="let list of dirsearchLists" >{{list}}</option>
               </select>
-
             </td>
             <td class="td-actions text-right">
-              <button class="btn btn-warning btn-simple btn-sm center pull-right" (click)="viewSubdomains(file)">BruteForce</button>
+              <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeDirsearch(subdomain)" >BruteForce</button>
             </td>
           </tr>
         </tbody>
@@ -173,15 +170,13 @@
             <td class="text-center">{{i+1}}</td>
             <td>{{subdomain}}</td>
             <td>
-              
-              <select class="custom-select" >
+              <select class="custom-select" [(ngModel)]="selectList" (change)="captureList()">
                 <option selected>Choose...</option>
-                <option *ngFor="let list of dirsearchLists">{{list}}</option>
+                <option selected *ngFor="let list of dirsearchLists" >{{list}}</option>
               </select>
-
             </td>
             <td class="td-actions text-right">
-              <button class="btn btn-warning btn-simple btn-sm center pull-right" (click)="viewSubdomains(file)">BruteForce</button>
+              <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeDirsearch(subdomain)" >BruteForce</button>
             </td>
           </tr>
         </tbody>
@@ -201,15 +196,13 @@
             <td class="text-center">{{i+1}}</td>
             <td>{{subdomain}}</td>
             <td>
-              
-              <select class="custom-select" (change)="selectedList($event.target.value)" [(ngModel)]="selectList">
+              <select class="custom-select" [(ngModel)]="selectList" (change)="captureList()">
                 <option selected>Choose...</option>
-                <option [value]="list" *ngFor="let list of dirsearchLists">{{list}}</option>
+                <option selected *ngFor="let list of dirsearchLists" >{{list}}</option>
               </select>
-
             </td>
             <td class="td-actions text-right">
-              <button class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeDirsearch(file,list)">BruteForce</button>
+              <button type="submit" class="btn btn-warning btn-simple btn-sm center pull-right" (click)="executeDirsearch(subdomain)" >BruteForce</button>
             </td>
           </tr>
         </tbody>

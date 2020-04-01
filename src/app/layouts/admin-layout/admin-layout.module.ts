@@ -12,8 +12,17 @@ import { ProgramComponent } from "../../pages/program/program.component";
 import { AddProgramComponent } from '../../pages/add-program/add-program.component';
 import { EditProgramComponent } from '../../pages/edit-program/edit-program.component';
 
+//TOOLS
+
+import { FindomainComponent } from '../../pages/tools/findomain/findomain.component';
+import { ArjunComponent } from '../../pages/tools/arjun/arjun.component';
+import { DirsearchComponent } from '../../pages/tools/dirsearch/dirsearch.component';
+import { LinkfinderComponent } from '../../pages/tools/linkfinder/linkfinder.component';
+
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+
+
 
 
 
@@ -32,7 +41,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
   declarations: [
     ProgramComponent,
     AddProgramComponent,
-    EditProgramComponent
+    EditProgramComponent,
+    FindomainComponent,
+    ArjunComponent,
+    DirsearchComponent,
+    LinkfinderComponent
   ]
 })
 export class AdminLayoutModule {}

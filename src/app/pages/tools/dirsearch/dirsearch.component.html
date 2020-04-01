@@ -1,0 +1,175 @@
+<div class=" content">
+  <div class=" row">
+    <div class=" col-md-8">
+      
+      <div class="card">
+        <div class="card-header">
+
+          <h4 class="card-title">Dirsearch</h4>
+          
+          <p class=" category">
+            <a href="https://github.com/maurosoria/dirsearch" target="_blank">Dirsearch - Directory BruteForce</a>
+          </p>
+
+        </div>
+        <div class=" card-body">
+          <blockquote class="blockquote">
+            <form [formGroup]="form" (ngSubmit)="onExecute()">
+              <div class=" row mb-3 mt-3">
+                <div class=" col-md-10">
+                  <div class=" form-group">
+                    <label for="url"> URL to Scan: &nbsp;&nbsp;&nbsp;<span style="color: rgb(241, 66, 66);">* Don't forget HTTP/HTTPS</span></label>
+                    <input
+                      formControlName="url"
+                      class=" form-control"
+                      placeholder="URL"
+                      type="text"
+                      (keyup)="searchValue($event)"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class=" row mb-3 mt-3">
+                <div class="col-md-10">
+                  <div class="form-group ">
+                    <label for="url"> List to BruteForce: &nbsp;&nbsp;&nbsp;<span style="color: rgb(241, 66, 66);">*</span></label>
+                    <select class="form-control custom-select" formControlName="list" (change)="captureList()">
+                      <option selected>Choose List...</option>
+                      <option *ngFor="let list of dirsearchLists" >{{list}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class=" row mb-5">
+                <div class=" col-md-12">
+                  <div class=" form-group">
+                    
+                    <div class="form-check form-check-inline col-md-12">
+                      <label class="form-check-label">
+                        <input class="form-check-input" formControlName="recursive" type="checkbox">
+                        <span class="form-check-sign"><span style="color: rgb(209, 6, 165);">-r:  </span>&nbsp; Bruteforce recursively</span>
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline col-md-12">
+                      <label class="form-check-label">
+                        <input class="form-check-input" formControlName="cookies" type="checkbox">
+                        <span class="form-check-sign"><span style="color: rgb(209, 6, 165);">-c: </span>&nbsp;Add cookies to the request</span>
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline col-md-12">
+                      <label class="form-check-label">
+                        <input class="form-check-input" formControlName="hostname" type="checkbox">
+                        <span class="form-check-sign"><span style="color: rgb(209, 6, 165);">-b: </span>&nbsp;Request by Hostname</span>
+                      </label>
+                    </div>
+ 
+                    <div class="form-check form-check-inline col-md-12">
+                      <label class="form-check-label">
+                        <input class="form-check-input" formControlName="forceExtensions" type="checkbox">
+                        <span class="form-check-sign"><span style="color: rgb(209, 6, 165);">-f: </span>&nbsp; Force extensions for every wordlist entry</span>
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline col-md-12">
+                      <label class="form-check-label">
+                        <input class="form-check-input" formControlName="followRedirect" type="checkbox">
+                        <span class="form-check-sign"><span style="color: rgb(209, 6, 165);">-F: </span>&nbsp; Follow Redirects</span>
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline col-md-12">
+                      <label class="form-check-label ">
+                        <input class="form-check-input" type="checkbox" formControlName="excludeCheck">
+                        <span class="form-check-sign"><span style="color: rgb(209, 6, 165);">-x: </span>&nbsp; Exclude Status Code</span>
+                      </label>
+                    </div>
+
+                    <div class=" row mb-3 mt-3" *ngIf="form.value.excludeCheck">
+                      <div class=" col-md-4">
+                        <div class=" ">
+                          <input
+                            formControlName="excludeStatus"
+                            class=" form-control"
+                            placeholder="Exclude Codes"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-check form-check-inline col-md-12">
+                      <label class="form-check-label ">
+                        <input class="form-check-input" type="checkbox" formControlName="threadCheck">
+                        <span class="form-check-sign"><span style="color: rgb(209, 6, 165);">-t: </span>&nbsp; Number of Threads</span>
+                      </label>
+                    </div>
+
+                    <div class=" row mb-3 mt-3" *ngIf="form.value.threadCheck">
+                      <div class=" col-md-4">
+                        <div class=" ">
+                          <input
+                            formControlName="threads"
+                            class=" form-control"
+                            placeholder="Number of Threads"
+                            type="number"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-check form-check-inline col-md-12">
+                      <label class="form-check-label ">
+                        <input class="form-check-input" type="checkbox" formControlName="httpCheck">
+                        <span class="form-check-sign"><span style="color: rgb(209, 6, 165);">--http-method: </span>&nbsp;  Method to use. [default: GET - possible: HEAD,POST]</span>
+                      </label>
+                    </div>
+
+                    <div class=" row mb-3 mt-3" *ngIf="form.value.httpCheck">
+                      <div class=" col-md-4">
+                        <div class=" ">
+                          <input
+                            formControlName="httpMethod"
+                            class=" form-control"
+                            placeholder="Method to use"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <hr>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class=" row mb-3">
+                <div class=" col-md-12">
+                  <div class=" form-group">
+
+                    <label for="program"><h6>Syntax:</h6><h5><span style="color: rgb(209, 6, 165);">{{syntax}}</span></h5></label>
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <button class="btn btn-success btn-simple" type="submit" [disabled]="form.invalid">Execute</button> 
+                </div>
+              </div>
+
+            </form>
+          </blockquote>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
