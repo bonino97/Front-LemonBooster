@@ -13,6 +13,7 @@ import { HakcheckurlComponent } from './hakcheckurl/hakcheckurl.component';
 import { DirsearchComponent } from './dirsearch/dirsearch.component';
 import { HakrawlerComponent } from './hakrawler/hakrawler.component';
 import { LinkfinderComponent } from './linkfinder/linkfinder.component';
+import { GetjsComponent } from './getjs/getjs.component';
 
 
 
@@ -35,6 +36,7 @@ import { LinkfinderComponent } from './linkfinder/linkfinder.component';
     DirsearchComponent,
     HakrawlerComponent,
     LinkfinderComponent,
+    GetjsComponent,
   ],
   exports: [
     ViewProgramComponent,

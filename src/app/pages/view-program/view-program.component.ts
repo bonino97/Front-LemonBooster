@@ -24,6 +24,7 @@ export class ViewProgramComponent implements OnInit {
   public openDirsearch: boolean;
   public openHakrawler: boolean;
   public openLinkfinder: boolean;
+  public openGetJs: boolean;
 
   constructor(
     public _ProgramService: ProgramService,
@@ -72,6 +73,7 @@ export class ViewProgramComponent implements OnInit {
     this.openDirsearch = false;
     this.openHakrawler = false;
     this.openLinkfinder = false;
+    this.openGetJs = false;
 
     switch(expression){
       case 1: {
@@ -104,6 +106,10 @@ export class ViewProgramComponent implements OnInit {
       }
       case 8: {
         this.openLinkfinder = true;
+        break;
+      }
+      case 9: {
+        this.openGetJs = true;
         break;
       }
     }

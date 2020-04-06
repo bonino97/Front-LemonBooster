@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ProgramService } from 'src/app/services/program/program.service';
+import { GetJsService } from '../../services/getjs.service';
 import { ActivatedRoute } from '@angular/router';
+import { ProgramService } from '../../services/program/program.service';
+import { GetJs } from '../../models/getjs.model';
+import { ExecLinkfinder } from 'src/app/models/exec-linkfinder.model';
 import Swal from 'sweetalert2';
-import { LinkfinderService } from '../../services/linkfinder.service';
-import { Linkfinder } from '../../models/linkfinder.model';
-import { ExecLinkfinder } from '../../models/exec-linkfinder.model';
+import { ExecGetJs } from '../../models/exec-getjs.model';
 
 @Component({
-  selector: 'app-linkfinder',
-  templateUrl: './linkfinder.component.html',
-  styleUrls: ['./linkfinder.component.scss']
+  selector: 'app-getjs',
+  templateUrl: './getjs.component.html',
+  styleUrls: ['./getjs.component.scss']
 })
-
-export class LinkfinderComponent implements OnInit {
+export class GetjsComponent implements OnInit {
 
   public program: any;
   public hakcheckurlJsFiles: [];
@@ -34,11 +34,10 @@ export class LinkfinderComponent implements OnInit {
 
   public openJsFiles: boolean = false;
 
-
   constructor(
     private _ProgramService: ProgramService,
     private _route: ActivatedRoute,
-    private _LinkfinderService: LinkfinderService
+    private _GetJsService: GetJsService
   ) { }
 
   ngOnInit() {
@@ -64,7 +63,7 @@ export class LinkfinderComponent implements OnInit {
 
   loadFiles(id){
     
-    this._LinkfinderService.getFiles(id).subscribe((resp:any)=>{
+    this._GetJsService.getFiles(id).subscribe((resp:any)=>{
       
       console.log(resp);
 
@@ -82,12 +81,12 @@ export class LinkfinderComponent implements OnInit {
 
     let id = this.program._id;
 
-    let linkfinder = new Linkfinder(
+    let getJs = new GetJs(
       id,
       file
     );
 
-    this._LinkfinderService.getJsLinks(linkfinder)
+    this._GetJsService.getJsLinks(getJs)
       .subscribe((resp:any) => {
         this.allLinks = resp.hakcheckurlFile;
         this.loadSubdomainsData(resp.hakcheckurlFile)
@@ -166,15 +165,15 @@ export class LinkfinderComponent implements OnInit {
     }
   }
 
-  executeLinkfinder(link){
+  executeGetJs(link){
     let id = this.program._id;
 
-    let execLinkfinder = new ExecLinkfinder (
+    let execGetJs = new ExecGetJs (
       id,
       link
     );
 
-    this._LinkfinderService.executeLinkfinder(execLinkfinder).subscribe((resp: any) => {
+    this._GetJsService.executeGetJs(execGetJs).subscribe((resp: any) => {
       if(resp.ok){
         Swal.fire({
           title: '<font color="white">Success</font>',
@@ -193,11 +192,5 @@ export class LinkfinderComponent implements OnInit {
     });
   }
 
-  searchValue(event){
-
-    const inputValue = event.target.value;
-    this.allLinks.filter(link => link.toLowerCase().includes(inputValue));
-    console.log(this.allLinks.filter(link => link.toLowerCase().includes(inputValue)));
-  }
 
 }
