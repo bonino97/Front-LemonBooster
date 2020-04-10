@@ -36,6 +36,12 @@ export const ROUTES: RouteInfo[] = [
     title: "Dirsearch",
     icon: "icon-attach-87",
     class: ""
+  },
+  {
+    path: "/jsearch",
+    title: "JSearch",
+    icon: "icon-paper",
+    class: ""
   }
 ];
 

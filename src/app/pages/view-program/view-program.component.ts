@@ -25,6 +25,7 @@ export class ViewProgramComponent implements OnInit {
   public openHakrawler: boolean;
   public openLinkfinder: boolean;
   public openGetJs: boolean;
+  public openZile: boolean;
 
   constructor(
     public _ProgramService: ProgramService,
@@ -74,6 +75,7 @@ export class ViewProgramComponent implements OnInit {
     this.openHakrawler = false;
     this.openLinkfinder = false;
     this.openGetJs = false;
+    this.openZile = false;
 
     switch(expression){
       case 1: {
@@ -110,6 +112,10 @@ export class ViewProgramComponent implements OnInit {
       }
       case 9: {
         this.openGetJs = true;
+        break;
+      }
+      case 10: {
+        this.openZile = true;
         break;
       }
     }

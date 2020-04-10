@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ArjunService {
+export class JsearchService {
 
-  readonly arjunUrl = Environment.apiUrl + '/Arjun/';
-  readonly arjunSingleUrl = this.arjunUrl + 'Single/';
+
+  readonly jsearchUrl = Environment.apiUrl + '/JSearch/';
+  readonly jsearchSingleUrl = this.jsearchUrl + 'Single/';
 
 
   constructor(
@@ -17,19 +18,18 @@ export class ArjunService {
     public router: Router
   ) { }
 
-  makeArjunSyntax(resp){
+  makeJSearchSyntax(resp: any) {
     let params = JSON.stringify(resp);
     let headers = new HttpHeaders().set('Content-Type','application/json');
     
-    return this.http.put(this.arjunSingleUrl, params, {headers:headers});
+    return this.http.put(this.jsearchSingleUrl, params, {headers:headers});
   }
 
-  executeSingleArjun(resp){
+  executeSingleJSearch(resp: any) {
     let params = JSON.stringify(resp);
     let headers = new HttpHeaders().set('Content-Type','application/json');
     
-    return this.http.post(this.arjunSingleUrl, params, {headers:headers});
+    return this.http.post(this.jsearchSingleUrl, params, {headers:headers});
   }
-
 
 }

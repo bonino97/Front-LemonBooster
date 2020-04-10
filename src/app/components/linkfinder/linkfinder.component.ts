@@ -69,6 +69,18 @@ export class LinkfinderComponent implements OnInit {
       console.log(resp);
 
       this.hakcheckurlJsFiles = resp.files;
+    },error => {
+
+      console.log(error)
+
+      if(!error.error.ok){
+        Swal.fire({
+          title: '<font color="white">Error</font>',
+          html: '<font color="white">'+ error.error.message +'</font>',
+          background: '#1e1e2f', 
+          icon: 'error'
+        });
+      }
     });
   }
 

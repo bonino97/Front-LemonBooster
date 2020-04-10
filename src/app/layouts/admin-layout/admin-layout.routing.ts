@@ -8,6 +8,7 @@ import { FindomainComponent } from '../../pages/tools/findomain/findomain.compon
 import { LinkfinderComponent } from '../../pages/tools/linkfinder/linkfinder.component';
 import { ArjunComponent } from '../../pages/tools/arjun/arjun.component';
 import { DirsearchComponent } from '../../pages/tools/dirsearch/dirsearch.component';
+import { JsearchComponent } from '../../pages/tools/jsearch/jsearch.component';
 
 
 
@@ -23,5 +24,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "findomain", component: FindomainComponent },
   { path: "linkfinder", component: LinkfinderComponent },
   { path: "arjun", component: ArjunComponent },
-  { path: "dirsearch", component: DirsearchComponent }
+  { path: "dirsearch", component: DirsearchComponent },
+  { path: "jsearch", component: JsearchComponent }
 ];

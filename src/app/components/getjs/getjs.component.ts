@@ -174,6 +174,7 @@ export class GetjsComponent implements OnInit {
     );
 
     this._GetJsService.executeGetJs(execGetJs).subscribe((resp: any) => {
+      console.log(resp)
       if(resp.ok){
         Swal.fire({
           title: '<font color="white">Success</font>',

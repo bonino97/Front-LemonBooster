@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { ProgramService } from 'src/app/services/program/program.service';
+import { ZileService } from '../../services/zile.service';
 import { ActivatedRoute } from '@angular/router';
-import { Subjack } from 'src/app/models/subjack.model';
+import { ProgramService } from 'src/app/services/program/program.service';
+import { Zile } from '../../models/zile.model';
 import Swal from 'sweetalert2';
-import { SubjackService } from '../../services/subjack.service';
 
 @Component({
-  selector: 'app-subjack',
-  templateUrl: './subjack.component.html',
-  styleUrls: ['./subjack.component.scss']
+  selector: 'app-zile',
+  templateUrl: './zile.component.html',
+  styleUrls: ['./zile.component.scss']
 })
-export class SubjackComponent implements OnInit {
+export class ZileComponent implements OnInit {
 
   public program: any;
-  public subdomainsFiles: [];
+  public hakrawlerFiles: [];
 
   constructor(
     private _ProgramService: ProgramService,
-    private _SubjackService: SubjackService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _ZileService: ZileService
   ) { }
 
   ngOnInit() {
@@ -44,9 +44,12 @@ export class SubjackComponent implements OnInit {
 
   loadFiles(id){
     
-    this._SubjackService.getFiles(id).subscribe((resp:any)=>{
-      this.subdomainsFiles = resp.subdomainFiles;
+    this._ZileService.getFiles(id).subscribe((resp:any)=>{
+      this.hakrawlerFiles = resp.files;
     }, error => {
+
+      console.log(error)
+
       if(!error.error.ok){
         Swal.fire({
           title: '<font color="white">Error</font>',
@@ -58,18 +61,17 @@ export class SubjackComponent implements OnInit {
     });
   }
 
-  executeSubjack(file){
+  executeZile(file){
+    
     let id = this.program._id;
-
-    let subjack = new Subjack(
+    let url = file.split('-')[1]
+    
+    let zile = new Zile(
       id,
       file
     );
-    
-    console.log(subjack);
 
-    this._SubjackService.executeSubjack(subjack).subscribe((resp:any)=>{
-      console.log(resp);
+    this._ZileService.executeZile(zile).subscribe((resp: any) => {
       if(resp.ok){
         Swal.fire({
           title: '<font color="white">Success</font>',

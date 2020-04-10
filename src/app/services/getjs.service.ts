@@ -36,6 +36,8 @@ export class GetJsService {
     let params = JSON.stringify(getjs);
     let headers = new HttpHeaders().set('Content-Type','application/json');
 
+    console.log(params)
+
     return this.http.post(this.getjsUrl, params, {headers:headers});
   }
 

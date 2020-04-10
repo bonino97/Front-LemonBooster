@@ -14,6 +14,8 @@ import { DirsearchComponent } from './dirsearch/dirsearch.component';
 import { HakrawlerComponent } from './hakrawler/hakrawler.component';
 import { LinkfinderComponent } from './linkfinder/linkfinder.component';
 import { GetjsComponent } from './getjs/getjs.component';
+import { JsearchComponent } from '../pages/tools/jsearch/jsearch.component';
+import { ZileComponent } from './zile/zile.component';
 
 
 
@@ -37,6 +39,8 @@ import { GetjsComponent } from './getjs/getjs.component';
     HakrawlerComponent,
     LinkfinderComponent,
     GetjsComponent,
+    JsearchComponent,
+    ZileComponent
   ],
   exports: [
     ViewProgramComponent,
