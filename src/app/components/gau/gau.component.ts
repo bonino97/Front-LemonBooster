@@ -2,30 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { ProgramService } from 'src/app/services/program/program.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
-import { HakrawlerService } from '../../services/hakrawler.service';
-import { Hakrawler } from '../../models/hakrawler.model';
-
+import { GauService } from '../../services/gau.service';
+import { Gau } from '../../models/gau.model';
 
 @Component({
-  selector: 'app-hakrawler',
-  templateUrl: './hakrawler.component.html',
-  styleUrls: ['./hakrawler.component.scss']
+  selector: 'app-gau',
+  templateUrl: './gau.component.html',
+  styleUrls: ['./gau.component.scss']
 })
-export class HakrawlerComponent implements OnInit {
+export class GauComponent implements OnInit {
+
   public loading = false;
   public program: any;
-  public hakrawlerFiles: [];
+  public gauFiles: [];
 
   constructor(
     private _ProgramService: ProgramService,
     private _route: ActivatedRoute,
-    private _HakrawlerService: HakrawlerService
+    private _GauService: GauService
   ) { }
 
   ngOnInit() {
-
     this.loadProgram();
-
   }
 
   loadProgram(){
@@ -47,9 +45,9 @@ export class HakrawlerComponent implements OnInit {
 
   loadFiles(id){
     
-    this._HakrawlerService.getFiles(id).subscribe((resp:any)=>{
+    this._GauService.getFiles(id).subscribe((resp:any)=>{
 
-      this.hakrawlerFiles = resp.files;
+      this.gauFiles = resp.files;
 
     },error => {
 
@@ -65,19 +63,19 @@ export class HakrawlerComponent implements OnInit {
       }
     });
   }
-
-  executeHakrawler(file){
+  
+  executeGau(file){
     this.loading = true;
     let id = this.program._id;
     let url = file.split('-')[1]
     
-    let hakrawler = new Hakrawler(
+    let gau = new Gau(
       id,
       url,
       file
     );
 
-    this._HakrawlerService.executeHakrawler(hakrawler).subscribe((resp: any) => {
+    this._GauService.executeGau(gau).subscribe((resp: any) => {
       this.loading = false;
       if(resp.ok){
         Swal.fire({

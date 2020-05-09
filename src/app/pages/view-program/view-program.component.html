@@ -23,7 +23,7 @@
             <div class="row">
                 &nbsp;
             </div>
-            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(1)" >Findomain</button>
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(1)" >Enumeration</button>
             &nbsp;
             <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(2)" >Httprobe</button>
             &nbsp;
@@ -35,13 +35,15 @@
             &nbsp;
             <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(6)" >Dirsearch</button>
             &nbsp;
-            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(7)" >Hakrawler</button>
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(7)" >Crawlers</button>
             &nbsp;
             <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(8)" >LinkFinder</button>
             &nbsp;
-            <!-- <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(9)" >GetJs</button>
-            &nbsp; -->
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(9)" >GetJs</button>
+            &nbsp;
             <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(10)" >KeysFinder</button>
+            &nbsp;
+            <button class="btn btn-primary btn-simple btn-sm center" (click)="showComponent(11)" >GoSpider</button>
           </blockquote>
         </div>
       </div>
@@ -56,7 +58,9 @@
       <app-linkfinder *ngIf="openLinkfinder"></app-linkfinder>
       <app-getjs *ngIf="openGetJs"></app-getjs>
       <app-zile *ngIf="openZile"></app-zile>
-
+      <app-gospider *ngIf="openGospider"></app-gospider>
+      <app-waybackurls *ngIf="openWaybackurls"></app-waybackurls>
+      <app-gau *ngIf="openGau"></app-gau>
 
     </div>
   </div>

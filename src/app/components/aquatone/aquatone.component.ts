@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./aquatone.component.scss']
 })
 export class AquatoneComponent implements OnInit {
-
+  public loading = false;
   public program: any;
   public httprobeFiles: [];
 
@@ -65,6 +65,7 @@ export class AquatoneComponent implements OnInit {
   }
 
   executeAquatone(file){
+    this.loading = true;
     let id = this.program._id;
 
     let aquatone = new Aquatone(
@@ -73,6 +74,7 @@ export class AquatoneComponent implements OnInit {
       );
 
       this._AquatoneService.executeAquatone(aquatone).subscribe((resp:any) => {
+        this.loading = false;
         if(resp.ok){
           Swal.fire({
             title: '<font color="white">Success</font>',

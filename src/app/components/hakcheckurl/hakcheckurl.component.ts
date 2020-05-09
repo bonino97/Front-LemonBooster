@@ -12,6 +12,7 @@ import { Hakcheckurl } from '../../models/hakcheckurl.model';
 })
 export class HakcheckurlComponent implements OnInit {
 
+  public loading = false;
   public program: any;
   public httprobeFiles: [];
 
@@ -65,6 +66,7 @@ export class HakcheckurlComponent implements OnInit {
   }
 
   executeHakcheckurl(file){
+    this.loading = true;
     let id = this.program._id;
 
     let hakcheckurl = new Hakcheckurl(
@@ -73,6 +75,7 @@ export class HakcheckurlComponent implements OnInit {
       );
 
       this._HakcheckurlService.executeHakcheckurl(hakcheckurl).subscribe((resp:any) => {
+        this.loading = false;
         console.log(resp);
         if(resp.ok){
           Swal.fire({

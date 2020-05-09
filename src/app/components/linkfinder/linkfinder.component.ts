@@ -13,7 +13,7 @@ import { ExecLinkfinder } from '../../models/exec-linkfinder.model';
 })
 
 export class LinkfinderComponent implements OnInit {
-
+  public loading = false;
   public program: any;
   public hakcheckurlJsFiles: [];
 
@@ -179,6 +179,7 @@ export class LinkfinderComponent implements OnInit {
   }
 
   executeLinkfinder(link){
+    this.loading = true;
     let id = this.program._id;
 
     let execLinkfinder = new ExecLinkfinder (
@@ -187,6 +188,7 @@ export class LinkfinderComponent implements OnInit {
     );
 
     this._LinkfinderService.executeLinkfinder(execLinkfinder).subscribe((resp: any) => {
+      this.loading = false;
       if(resp.ok){
         Swal.fire({
           title: '<font color="white">Success</font>',

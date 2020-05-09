@@ -2,31 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import { ProgramService } from 'src/app/services/program/program.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
-import { HakrawlerService } from '../../services/hakrawler.service';
-import { Hakrawler } from '../../models/hakrawler.model';
+import { GospiderService } from '../../services/gospider.service';
+import { GoSpider } from '../../models/gospider.model';
 
 
 @Component({
-  selector: 'app-hakrawler',
-  templateUrl: './hakrawler.component.html',
-  styleUrls: ['./hakrawler.component.scss']
+  selector: 'app-gospider',
+  templateUrl: './gospider.component.html',
+  styleUrls: ['./gospider.component.scss']
 })
-export class HakrawlerComponent implements OnInit {
+export class GospiderComponent implements OnInit {
+
   public loading = false;
   public program: any;
-  public hakrawlerFiles: [];
+  public gospiderFiles: [];
 
   constructor(
     private _ProgramService: ProgramService,
     private _route: ActivatedRoute,
-    private _HakrawlerService: HakrawlerService
+    private _GoSpiderService: GospiderService
   ) { }
 
   ngOnInit() {
-
     this.loadProgram();
-
   }
+
 
   loadProgram(){
     this._route.params.subscribe(params => {
@@ -47,9 +47,9 @@ export class HakrawlerComponent implements OnInit {
 
   loadFiles(id){
     
-    this._HakrawlerService.getFiles(id).subscribe((resp:any)=>{
+    this._GoSpiderService.getFiles(id).subscribe((resp:any)=>{
 
-      this.hakrawlerFiles = resp.files;
+      this.gospiderFiles = resp.files;
 
     },error => {
 
@@ -66,18 +66,18 @@ export class HakrawlerComponent implements OnInit {
     });
   }
 
-  executeHakrawler(file){
+  executeGoSpider(file){
     this.loading = true;
     let id = this.program._id;
     let url = file.split('-')[1]
     
-    let hakrawler = new Hakrawler(
+    let gospider = new GoSpider(
       id,
       url,
       file
     );
 
-    this._HakrawlerService.executeHakrawler(hakrawler).subscribe((resp: any) => {
+    this._GoSpiderService.executeGoSpider(gospider).subscribe((resp: any) => {
       this.loading = false;
       if(resp.ok){
         Swal.fire({
@@ -97,5 +97,6 @@ export class HakrawlerComponent implements OnInit {
     });
 
   }
+
 
 }

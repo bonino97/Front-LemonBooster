@@ -1,10 +1,10 @@
 <ngx-loading *ngIf="loading" [show]="loading" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true }" [template]="customLoadingTemplate"></ngx-loading>
 <div class="card" *ngIf="program">
   <div class=" card-header">
-    <h4 class=" title">Aquatone</h4>
+    <h4 class=" title">Gau</h4>
     <p class=" category">
       
-      <a href="https://github.com/michenriksen/aquatone" target="_blank">Aquatone Subdomain Screnshoots </a>
+      <a href="https://github.com/lc/gau" target="_blank">Gau WebApp Crawler</a>
     </p>
   </div>
   <div class=" card-body">
@@ -20,16 +20,16 @@
               <thead>
                 <tr>
                   <th class="text-center">#</th>
-                  <th>HTTPROBE FILES</th>
+                  <th>SUBDOMAIN FILES</th>
                   <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                 </tr>
               </thead>
               <tbody >
-                <tr *ngFor="let file of httprobeFiles; let i = index">
+                <tr *ngFor="let file of gauFiles; let i = index">
                   <td class="text-center">{{i+1}}</td>
                   <td>{{file}}</td>
                   <td class="td-actions text-right">
-                    <button class="btn btn-scope btn-simple btn-sm center pull-right" (click)="executeAquatone(file)" >Execute</button>
+                    <button class="btn btn-simple btn-sm center pull-right" (click)="executeGau(file)">Execute</button>
                   </td>
                 </tr>
               </tbody>

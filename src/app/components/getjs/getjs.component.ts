@@ -7,6 +7,7 @@ import { ExecLinkfinder } from 'src/app/models/exec-linkfinder.model';
 import Swal from 'sweetalert2';
 import { ExecGetJs } from '../../models/exec-getjs.model';
 
+
 @Component({
   selector: 'app-getjs',
   templateUrl: './getjs.component.html',
@@ -14,6 +15,7 @@ import { ExecGetJs } from '../../models/exec-getjs.model';
 })
 export class GetjsComponent implements OnInit {
 
+  public loading = false;
   public program: any;
   public hakcheckurlJsFiles: [];
 
@@ -68,6 +70,18 @@ export class GetjsComponent implements OnInit {
       console.log(resp);
 
       this.hakcheckurlJsFiles = resp.files;
+    },error => {
+
+      console.log(error)
+
+      if(!error.error.ok){
+        Swal.fire({
+          title: '<font color="white">Error</font>',
+          html: '<font color="white">'+ error.error.message +'</font>',
+          background: '#1e1e2f', 
+          icon: 'error'
+        });
+      }
     });
   }
 
@@ -166,6 +180,7 @@ export class GetjsComponent implements OnInit {
   }
 
   executeGetJs(link){
+    this.loading = true;
     let id = this.program._id;
 
     let execGetJs = new ExecGetJs (
@@ -174,6 +189,7 @@ export class GetjsComponent implements OnInit {
     );
 
     this._GetJsService.executeGetJs(execGetJs).subscribe((resp: any) => {
+      this.loading = false;
       console.log(resp)
       if(resp.ok){
         Swal.fire({

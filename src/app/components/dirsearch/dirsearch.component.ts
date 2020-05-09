@@ -13,7 +13,7 @@ import { ExecDirsearch } from 'src/app/models/exec-dirsearch.model';
   styleUrls: ['./dirsearch.component.scss']
 })
 export class DirsearchComponent implements OnInit {
-
+  public loading = false;
   public program: any;
   public hakcheckurlFiles: [];
   public dirsearchLists: any = [] ;
@@ -189,6 +189,7 @@ export class DirsearchComponent implements OnInit {
   }
 
   executeDirsearch(subdomain){
+    this.loading = true;
     let id = this.program._id;
     let list = this.captureList();
 
@@ -199,6 +200,7 @@ export class DirsearchComponent implements OnInit {
     );
 
     this._DirsearchService.executeDirsearch(execDirsearch).subscribe((resp: any) => {
+      this.loading = false;
       if(resp.ok){
         Swal.fire({
           title: '<font color="white">Success</font>',

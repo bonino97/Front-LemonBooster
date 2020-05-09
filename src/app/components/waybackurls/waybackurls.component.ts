@@ -2,32 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import { ProgramService } from 'src/app/services/program/program.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
-import { HakrawlerService } from '../../services/hakrawler.service';
-import { Hakrawler } from '../../models/hakrawler.model';
+import { WaybackurlsService } from '../../services/waybackurls.service';
+import { Waybackurls } from '../../models/waybackurls.model';
 
 
 @Component({
-  selector: 'app-hakrawler',
-  templateUrl: './hakrawler.component.html',
-  styleUrls: ['./hakrawler.component.scss']
+  selector: 'app-waybackurls',
+  templateUrl: './waybackurls.component.html',
+  styleUrls: ['./waybackurls.component.scss']
 })
-export class HakrawlerComponent implements OnInit {
+export class WaybackurlsComponent implements OnInit {
+
   public loading = false;
   public program: any;
-  public hakrawlerFiles: [];
+  public waybackurlsFiles: [];
 
   constructor(
     private _ProgramService: ProgramService,
     private _route: ActivatedRoute,
-    private _HakrawlerService: HakrawlerService
+    private _WaybackurlsService: WaybackurlsService
   ) { }
 
   ngOnInit() {
-
     this.loadProgram();
-
   }
-
+  
   loadProgram(){
     this._route.params.subscribe(params => {
       let id = params['id'];
@@ -47,9 +46,9 @@ export class HakrawlerComponent implements OnInit {
 
   loadFiles(id){
     
-    this._HakrawlerService.getFiles(id).subscribe((resp:any)=>{
+    this._WaybackurlsService.getFiles(id).subscribe((resp:any)=>{
 
-      this.hakrawlerFiles = resp.files;
+      this.waybackurlsFiles = resp.files;
 
     },error => {
 
@@ -66,18 +65,18 @@ export class HakrawlerComponent implements OnInit {
     });
   }
 
-  executeHakrawler(file){
+  executeWaybackurls(file){
     this.loading = true;
     let id = this.program._id;
     let url = file.split('-')[1]
     
-    let hakrawler = new Hakrawler(
+    let waybackurls = new Waybackurls(
       id,
       url,
       file
     );
 
-    this._HakrawlerService.executeHakrawler(hakrawler).subscribe((resp: any) => {
+    this._WaybackurlsService.executeWaybackurls(waybackurls).subscribe((resp: any) => {
       this.loading = false;
       if(resp.ok){
         Swal.fire({
@@ -97,5 +96,6 @@ export class HakrawlerComponent implements OnInit {
     });
 
   }
+
 
 }

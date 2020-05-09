@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
+import { NgxLoadingModule } from 'ngx-loading';
 
 import { ViewProgramComponent } from '../pages/view-program/view-program.component';
 import { FindomainComponent } from './findomain/findomain.component';
@@ -16,6 +17,9 @@ import { LinkfinderComponent } from './linkfinder/linkfinder.component';
 import { GetjsComponent } from './getjs/getjs.component';
 import { JsearchComponent } from '../pages/tools/jsearch/jsearch.component';
 import { ZileComponent } from './zile/zile.component';
+import { GospiderComponent } from './gospider/gospider.component';
+import { WaybackurlsComponent } from './waybackurls/waybackurls.component';
+import { GauComponent } from './gau/gau.component';
 
 
 
@@ -26,7 +30,8 @@ import { ZileComponent } from './zile/zile.component';
     HttpClientModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxLoadingModule
   ],
   declarations: [
     ViewProgramComponent,
@@ -40,7 +45,10 @@ import { ZileComponent } from './zile/zile.component';
     LinkfinderComponent,
     GetjsComponent,
     JsearchComponent,
-    ZileComponent
+    ZileComponent,
+    GospiderComponent,
+    WaybackurlsComponent,
+    GauComponent
   ],
   exports: [
     ViewProgramComponent,

@@ -11,7 +11,7 @@ import { SubjackService } from '../../services/subjack.service';
   styleUrls: ['./subjack.component.scss']
 })
 export class SubjackComponent implements OnInit {
-
+  public loading = false;
   public program: any;
   public subdomainsFiles: [];
 
@@ -59,6 +59,7 @@ export class SubjackComponent implements OnInit {
   }
 
   executeSubjack(file){
+    this.loading = true;
     let id = this.program._id;
 
     let subjack = new Subjack(
@@ -69,6 +70,7 @@ export class SubjackComponent implements OnInit {
     console.log(subjack);
 
     this._SubjackService.executeSubjack(subjack).subscribe((resp:any)=>{
+      this.loading = false;
       console.log(resp);
       if(resp.ok){
         Swal.fire({

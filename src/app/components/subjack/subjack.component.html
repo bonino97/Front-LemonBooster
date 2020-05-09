@@ -1,3 +1,4 @@
+<ngx-loading *ngIf="loading" [show]="loading" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true }" [template]="customLoadingTemplate"></ngx-loading>
 <div class="card" *ngIf="program">
   <div class=" card-header">
     <h4 class=" title">Subjack</h4>
@@ -19,7 +20,7 @@
               <thead>
                 <tr>
                   <th class="text-center">#</th>
-                  <th>FINDOMAIN FILES</th>
+                  <th>SUBDOMAIN FILES</th>
                   <th class="text-right">ACTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                 </tr>
               </thead>

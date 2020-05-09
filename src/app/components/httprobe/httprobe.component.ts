@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class HttprobeComponent implements OnInit {
 
+  public loading = false;
   public program: any;
   public subdomainsFiles: [];
 
@@ -63,6 +64,9 @@ export class HttprobeComponent implements OnInit {
   }
 
   executeHttprobe(file){
+
+    this.loading = true;
+
     let id = this.program._id;
 
     let httprobe = new Httprobe(
@@ -73,6 +77,7 @@ export class HttprobeComponent implements OnInit {
     console.log(httprobe);
 
     this._HttprobeService.executeHttprobe(httprobe).subscribe((resp:any)=>{
+      this.loading = false;
       console.log(resp);
       if(resp.ok){
         Swal.fire({

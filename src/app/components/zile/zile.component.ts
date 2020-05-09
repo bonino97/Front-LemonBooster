@@ -14,6 +14,7 @@ export class ZileComponent implements OnInit {
 
   public program: any;
   public hakrawlerFiles: [];
+  public loading = false;
 
   constructor(
     private _ProgramService: ProgramService,
@@ -62,7 +63,7 @@ export class ZileComponent implements OnInit {
   }
 
   executeZile(file){
-    
+    this.loading = true;
     let id = this.program._id;
     let url = file.split('-')[1]
     
@@ -72,6 +73,7 @@ export class ZileComponent implements OnInit {
     );
 
     this._ZileService.executeZile(zile).subscribe((resp: any) => {
+      this.loading = false;
       if(resp.ok){
         Swal.fire({
           title: '<font color="white">Success</font>',

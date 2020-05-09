@@ -6,7 +6,6 @@ import { FindomainService } from '../../services/findomain.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: "app-findomain",
   templateUrl: "findomain.component.html",
@@ -14,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class FindomainComponent implements OnInit {
   
+  public loading = false;
   public program: any;
   public scopeToArray = [];
 
@@ -48,6 +48,8 @@ export class FindomainComponent implements OnInit {
 
   executeFindomain(scope){
 
+    this.loading = true;
+    
     let id = this.program._id;
 
     let findomain = new Findomain(
@@ -55,10 +57,11 @@ export class FindomainComponent implements OnInit {
       id
     );
     
-    console.log(findomain);
-
     this._FindomainService.executeFindomain(findomain).subscribe((resp:any)=>{
       console.log(resp);
+
+      this.loading = false;
+
       if(resp.ok){
         Swal.fire({
           title: '<font color="white">Success</font>',
@@ -74,6 +77,7 @@ export class FindomainComponent implements OnInit {
           icon: 'error'
         });  
       }
+
     });
   }
 
