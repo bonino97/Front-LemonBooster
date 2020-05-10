@@ -1,4 +1,4 @@
 export const Environment = {
   production: true,
-  apiUrl: 'http://localhost:3000'
+  apiUrl: 'http://api.lemonsec.com'
 };

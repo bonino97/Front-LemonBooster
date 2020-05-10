@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class LinkfinderComponent implements OnInit {
 
-  private form : FormGroup;
+  public form : FormGroup;
   public syntax: String;
 
   constructor(

@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class FindomainComponent implements OnInit {
 
-  private form : FormGroup;
+  public form : FormGroup;
   public syntax: String;
 
   constructor(

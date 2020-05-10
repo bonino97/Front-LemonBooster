@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class DirsearchComponent implements OnInit {
 
-  private form : FormGroup;
+  public form : FormGroup;
   public syntax: String;
   public dirsearchLists: any = [] ;
   public selectList: any;
